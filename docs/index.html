@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Create Interactive Graphs with Echarts JavaScript Version 4 • echarts4r</title>
+<title>Create Interactive Graphs with Echarts JavaScript Version 5 • echarts4r</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -20,7 +20,7 @@
 <script src="pkgdown.js"></script><!-- docsearch --><script src="docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="extra.css" rel="stylesheet">
-<meta property="og:title" content="Create Interactive Graphs with Echarts JavaScript Version 4">
+<meta property="og:title" content="Create Interactive Graphs with Echarts JavaScript Version 5">
 <meta property="og:description" content="Easily create interactive charts by leveraging the Echarts Javascript library which includes
     36 chart types, themes, Shiny proxies and animations.">
 <meta property="og:image" content="http://echarts4r.john-coene.com/logo.png">
@@ -48,7 +48,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">echarts4r</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
       </span>
     </div>
 
@@ -56,31 +56,25 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fa fa-home"></span>
+    <span class="fas fa-home"></span>
      
   </a>
 </li>
 <li>
   <a href="LICENSE.html">
-    <span class="fa fa-balance-scale"></span>
+    <span class="fas fa-balance-scale"></span>
      
   </a>
 </li>
 <li>
   <a href="news/index.html">
-    <span class="fa fa-newspaper-o"></span>
+    <span class="fas fa-newspaper"></span>
      
   </a>
 </li>
 <li>
   <a href="reference/">
-    <span class="fa fa-code"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="articles/development.html">
-    <span class="fa fa-lightbulb-o"></span>
+    <span class="fas fa-code"></span>
      
   </a>
 </li>
@@ -205,6 +199,9 @@
     <li>
       <a href="articles/boxes.html">Boxes</a>
     </li>
+    <li>
+      <a href="articles/proxies.html">Proxies</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -214,7 +211,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/JohnCoene/echarts4r">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -246,7 +243,7 @@
 </div>
 <div class="col-md-8">
 <p>
-Interactive visualisations for R via <a href="https://echarts.apache.org/">Apache ECharts (incubating)</a>
+Interactive visualisations for R via <a href="https://echarts.apache.org/">Apache ECharts</a>
 </p>
 <a class="btn btn-success" href="articles/get_started.html" style="margin-bottom: 5px;">Get Started</a> <a class="btn btn-primary" href="reference/" style="margin-bottom: 5px;">Reference</a> <a class="btn btn-info" href="articles/timeline" style="margin-bottom: 5px;">Timeline</a> <a class="btn btn-default" href="http://shiny.john-coene.com/echarts4rShiny" style="margin-bottom: 5px;">Shiny Demo</a>
 </div>
@@ -254,45 +251,52 @@ Interactive visualisations for R via <a href="https://echarts.apache.org/">Apach
 <p><br><br></p>
 <div class="thumbnail" style="text-align:center;">
 <div class="caption">
-<i class="fa fa-flask fa-4x" style="color:#293c55;"></i>
+<i class="fa fa-code-branch fa-4x" style="color:#F72C5B;"></i>
 <h4>
-New Features
+Version 5
 </h4>
 <p>
-“Use (almost) any chart serie as chart proxy, now on CRAN!”
+Explore new features available on version 5 of echarts.js!
 </p>
-<br><a class="btn btn-warning" href="articles/development">Explore</a> <a class="btn btn-default" href="news/">Changelog</a>
+<br><a class="btn btn-default" href="articles/v5">Explore</a>
 </div>
+</div>
+<div id="note" class="section level2">
+<h2 class="hasAnchor">
+<a href="#note" class="anchor"></a>Note</h2>
+<p>The Github version is currently going through the update from ECharts.js version 4 to version 5: feel free to test it but there are some issues. Please use the stable CRAN version otherwise.</p>
+</div>
+<div id="introduction" class="section level2">
+<h2 class="hasAnchor">
+<a href="#introduction" class="anchor"></a>Introduction</h2>
+<p>Thanks to <a href="https://twitter.com/sharon000">Sharon Machlis</a> there is an amazing video and <a href="https://www.infoworld.com/article/3607068/plot-in-r-with-echarts4r.html">article</a> introducing echarts4r.</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/OBJxIWEFHdo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>The package is available on <a href="https://CRAN.R-project.org/package=echarts4r">CRAN</a>. The full installation can be obtained with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"echarts4r"</span>)
-</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"echarts4r"</span><span class="op">)</span></code></pre></div>
 <p>However, if you only want a <em>lite</em> version you can simply do, this is useful for a lighter version that installs faster if you do not want to use any of the geospatial features of the package:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"echarts4r"</span>, dependencies = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Depends"</span>, <span class="st">"Imports"</span>))
-</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"echarts4r"</span>, dependencies <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Depends"</span>, <span class="st">"Imports"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>You can also install the <em>unstable</em> development version of echarts4r with <code>remotes</code> from Github, see <a href="news/index.html">changes</a>.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="co"># install.packages("remotes")</span>
-<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"JohnCoene/echarts4r"</span>)
-</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"JohnCoene/echarts4r"</span><span class="op">)</span></code></pre></div>
 <p>如果您位于中国，请安装:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="co"># install.packages("remotes")</span>
-<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html">install_git</a></span>(<span class="st">"https://gitee.com/JohnCoene/echarts4r"</span>)
-</pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html">install_git</a></span><span class="op">(</span><span class="st">"https://gitee.com/JohnCoene/echarts4r"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="companions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#companions" class="anchor"></a>Companions</h2>
 <p>Companion packages to make <code>echarts4r</code> even better. You can install and load the whole suite with:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"JohnCoene/echarts4r.suite"</span>)
-</pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"JohnCoene/echarts4r.suite"</span><span class="op">)</span></code></pre></div>
 <div class="row">
 <div class="col-md-6">
 <div class="thumbnail" style="text-align:center;">
@@ -304,9 +308,8 @@ echarts4r.assets
 <p>
 Icons, and assets for globes, add visually interesting globe overlays and background.
 </p>
-<pre class="downlit">
-<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">'JohnCoene/echarts4r.assets'</span>)
-</pre>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">'JohnCoene/echarts4r.assets'</span><span class="op">)</span></code></pre>
 <a class="btn btn-default" href="https://echarts4r-assets.john-coene.com/">Website</a> <a class="btn btn-default" href="https://github.com/JohnCoene/echarts4r.assets">Github</a>
 </div>
 </div>
@@ -321,9 +324,8 @@ echarts4r.maps
 <p>
 A collection of 215 country maps to use with geo-spatial visualisations.
 </p>
-<pre class="downlit">
-<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">'JohnCoene/echarts4r.maps'</span>)
-</pre>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">'JohnCoene/echarts4r.maps'</span><span class="op">)</span></code></pre>
 <a class="btn btn-default" href="https://echarts4r-maps.john-coene.com/">Website</a> <a class="btn btn-default" href="https://github.com/JohnCoene/echarts4r.maps">Github</a>
 </div>
 </div>
@@ -342,7 +344,7 @@ A collection of 215 country maps to use with geo-spatial visualisations.
 </li>
 <li>Browse source code at <br><a href="https://github.com/JohnCoene/echarts4r/">https://​github.com/​JohnCoene/​echarts4r/​</a>
 </li>
-<li>Report a bug at <br><a href="https://github.com/JohnCoene/echarts4r/issues">https://​github.com/​JohnCoene/​echarts4r/​issues</a>
+<li>Report a bug at <br><a href="https://github.com/JohnCoene/echarts4r/issues/">https://​github.com/​JohnCoene/​echarts4r/​issues/​</a>
 </li>
 <li>Original library at <br><a href="https://echarts.apache.org/">https://​echarts.apache.org/​</a>
 </li>
