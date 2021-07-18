@@ -12,6 +12,9 @@
 #' argument or pass a list specifying the label formatter.
 #' \code{label = list(formatter = "label")}. The former is more convenient
 #' but more limited, e.g.: you cannot specify the placement of the label.
+#' When the \code{e_mark} series function is used with \code{e_timeline} at the 
+#' same time, if the number of marks provided does not match the series, the 
+#' mark information will follow the setting of the previous frame.
 #'
 #' @examples
 #' max <- list(
@@ -29,14 +32,14 @@
 #'   name = "AVG"
 #' )
 #'
-#' mtcars %>%
-#'   e_charts(mpg) %>%
-#'   e_line(wt) %>%
-#'   e_line(drat) %>%
-#'   e_line(cyl) %>%
-#'   e_mark_point("wt", data = max) %>%
-#'   e_mark_point(c("cyl", "drat"), data = min) %>%
-#'   e_mark_line(data = avg) %>% # applies to all
+#' mtcars |>
+#'   e_charts(mpg) |>
+#'   e_line(wt) |>
+#'   e_line(drat) |>
+#'   e_line(cyl) |>
+#'   e_mark_point("wt", data = max) |>
+#'   e_mark_point(c("cyl", "drat"), data = min) |>
+#'   e_mark_line(data = avg) |> # applies to all
 #'   e_mark_area(
 #'     serie = "wt",
 #'     data = list(
@@ -45,29 +48,35 @@
 #'     )
 #'   )
 #'
-#' # serie options
-#'
-#' iris %>%
-#'   group_by(Species) %>%
-#'   e_charts(Sepal.Length, timeline = TRUE) %>%
-#'   e_line(Sepal.Width) %>%
+#' # Serie options, since the mark of "virginica" is not set, the mark setting 
+#' # of the previous frame is used
+#' iris |>
+#'   group_by(Species) |>
+#'   e_charts(Sepal.Length, timeline = TRUE) |>
+#'   e_line(Sepal.Width) |>
 #'   e_timeline_serie(
 #'     title = list(
 #'       list(text = "setosa"),
 #'       list(text = "versicolor"),
 #'       list(text = "virginica")
 #'     )
-#'   ) %>%
-#'   e_mark_area(serie = "setosa") %>%
+#'   ) |>
+#'   e_mark_area(
+#'     serie = "setosa",
+#'     data = list(
+#'       list(xAxis = 4, yAxis = 2),
+#'       list(xAxis = 6, yAxis = 4.5)
+#'     ),
+#'     itemStyle = list(color = "lightgreen")
+#'   ) |>
 #'   e_mark_area(
 #'     serie = "versicolor",
 #'     data = list(
-#'       list(xAxis = 2),
-#'       list(xAxis = 4)
+#'       list(xAxis = 4.5),
+#'       list(xAxis = 7)
 #'     ),
 #'     itemStyle = list(color = "lightblue")
-#'   ) %>%
-#'   e_mark_area(serie = "virginica")
+#'   )
 #' @seealso \href{https://echarts.apache.org/en/option.html#series-line.markPoint}{Additional point arguments},
 #' \href{https://echarts.apache.org/en/option.html#series-line.markLine}{Additional line arguments}
 #'
@@ -96,10 +105,12 @@ e_mark_point <- function(e, serie = NULL, data = NULL, ..., title = NULL, title_
     }
 
     if (e$x$tl) {
-      if (is.null(e$x$opts$options[[i]]$series[[1]]$markPoint)) {
-        e$x$opts$options[[i]]$series[[1]]$markPoint <- append(e$x$opts$options[[i]]$series[[1]]$markPoint, point)
-      } else {
-        e$x$opts$options[[i]]$series[[1]]$markPoint$data <- append(e$x$opts$options[[i]]$series[[1]]$markPoint$data, point$data)
+      for(j in 1:length(e$x$opts$options[[i]]$series)){
+        if (is.null(e$x$opts$options[[i]]$series[[j]]$markPoint)) {
+          e$x$opts$options[[i]]$series[[j]]$markPoint <- append(e$x$opts$options[[i]]$series[[j]]$markPoint, point)
+        } else {
+          e$x$opts$options[[i]]$series[[j]]$markPoint$data <- append(e$x$opts$options[[i]]$series[[j]]$markPoint$data, point$data)
+        }
       }
     }
     else {
@@ -139,10 +150,12 @@ e_mark_line <- function(e, serie = NULL, data = NULL, ..., title = NULL, title_p
     }
 
     if (e$x$tl) {
-      if (is.null(e$x$opts$options[[i]]$series[[1]]$markLine)) {
-        e$x$opts$options[[i]]$series[[1]]$markLine <- append(e$x$opts$options[[i]]$series[[1]]$markLine, point)
-      } else {
-        e$x$opts$options[[i]]$series[[1]]$markLine$data <- append(e$x$opts$options[[i]]$series[[1]]$markLine$data, point$data)
+      for(j in 1:length(e$x$opts$options[[i]]$series)){
+        if (is.null(e$x$opts$options[[i]]$series[[j]]$markLine)) {
+          e$x$opts$options[[i]]$series[[j]]$markLine <- append(e$x$opts$options[[i]]$series[[j]]$markLine, point)
+        } else {
+          e$x$opts$options[[i]]$series[[j]]$markLine$data <- append(e$x$opts$options[[i]]$series[[j]]$markLine$data, point$data)
+        }
       }
     }
     else {
@@ -182,10 +195,12 @@ e_mark_area <- function(e, serie = NULL, data = NULL, ..., title = NULL, title_p
     }
 
     if (e$x$tl) {
-      if (is.null(e$x$opts$options[[i]]$series[[1]]$markArea)) {
-        e$x$opts$options[[i]]$series[[1]]$markArea <- append(e$x$opts$options[[i]]$series[[1]]$markArea, point)
-      } else {
-        e$x$opts$options[[i]]$series[[1]]$markArea$data <- append(e$x$opts$options[[i]]$series[[1]]$markArea$data, point$data)
+      for(j in 1:length(e$x$opts$options[[i]]$series)){
+        if (is.null(e$x$opts$options[[i]]$series[[j]]$markArea)) {
+          e$x$opts$options[[i]]$series[[j]]$markArea <- append(e$x$opts$options[[i]]$series[[j]]$markArea, point)
+        } else {
+          e$x$opts$options[[i]]$series[[j]]$markArea$data <- append(e$x$opts$options[[i]]$series[[j]]$markArea$data, point$data)
+        }
       }
     }
     else {
@@ -230,8 +245,8 @@ e_mark_area <- function(e, serie = NULL, data = NULL, ..., title = NULL, title_p
 #' server <- function(input, output) {
 #'   data(EuStockMarkets)
 #'
-#'   bb <- as.data.frame(EuStockMarkets) %>%
-#'     slice_head(n = 150) %>%
+#'   bb <- as.data.frame(EuStockMarkets) |>
+#'     slice_head(n = 150) |>
 #'     mutate(day = 1:n())
 #'
 #'   output$plot <- renderEcharts4r({
@@ -239,13 +254,13 @@ e_mark_area <- function(e, serie = NULL, data = NULL, ..., title = NULL, title_p
 #'   })
 #'
 #'   observeEvent(input$pxy, {
-#'     echarts4rProxy("plot", data = NULL) %>%
+#'     echarts4rProxy("plot", data = NULL) |>
 #'       e_mark_p(
 #'         type = "line",
 #'         serie_index = 1,
 #'         data = list(type = "average"),
 #'         lineStyle = list(type = "dashed", color = "cyan")
-#'       ) %>%
+#'       ) |>
 #'       e_mark_p(
 #'         serie_index = 2,
 #'         data = list(
@@ -253,7 +268,7 @@ e_mark_area <- function(e, serie = NULL, data = NULL, ..., title = NULL, title_p
 #'           yAxis = bb$SMI[60],
 #'           value = "pnt"
 #'         )
-#'       ) %>%
+#'       ) |>
 #'       e_mark_p(
 #'         type = "line",
 #'         serie_index = 2,
@@ -262,7 +277,7 @@ e_mark_area <- function(e, serie = NULL, data = NULL, ..., title = NULL, title_p
 #'           list(xAxis = bb$day[37], yAxis = bb$SMI[37])
 #'         ),
 #'         lineStyle = list(type = "solid", color = "yellow")
-#'       ) %>%
+#'       ) |>
 #'       e_mark_p(
 #'         type = "area",
 #'         serie_index = 1,
@@ -272,23 +287,23 @@ e_mark_area <- function(e, serie = NULL, data = NULL, ..., title = NULL, title_p
 #'         ),
 #'         itemStyle = list(color = "lightblue"),
 #'         label = list(formatter = "X-area", position = "middle")
-#'       ) %>%
+#'       ) |>
 #'       e_merge()
 #'   })
 #'
 #'   react <- eventReactive(input$tln, {
 #'     tmp <- bb
-#'     if (input$tln) tmp <- tmp %>% group_by(day < 75)
+#'     if (input$tln) tmp <- tmp |> group_by(day < 75)
 #'
-#'     tmp %>%
+#'     tmp |>
 #'       e_charts(
 #'         day,
 #'         backgroundColor = "#181818",
 #'         legend = list(textStyle = list(color = "#aaa")),
 #'         timeline = input$tln
-#'       ) %>%
-#'       e_y_axis(scale = TRUE, axisLabel = list(color = "#aaa")) %>%
-#'       e_line(CAC, symbol = "none", color = "#ff33b8") %>%
+#'       ) |>
+#'       e_y_axis(scale = TRUE, axisLabel = list(color = "#aaa")) |>
+#'       e_line(CAC, symbol = "none", color = "#ff33b8") |>
 #'       e_line(SMI, symbol = "none", color = "green")
 #'   })
 #' }
